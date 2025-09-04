@@ -1,0 +1,358 @@
+body {
+	background-color: #fffffa;
+	font-family: 'Piazzolla', serif;
+}
+.modal-open {
+  overflow: hidden;
+}
+
+/* Fade-in */
+.fade-in {
+	opacity: 0;
+	transform: translateY(20px);
+	transition: opacity 1s ease-out, transform 1s ease-out;
+}
+.fade-in.visible {
+	opacity: 1;
+	transform: translateY(0);
+}
+
+/* Элемент при прокрутке */
+.element-animation {
+	opacity: 0;
+	position: relative;
+	top: 0;
+}
+.element-animation.element-show {
+	opacity: 1;
+	top: 20px;
+	transition-duration: 1.4s;
+}
+
+/* Таймер */
+.countdown-container {
+	display: flex;
+	justify-content: center;
+	margin: 20px 0;
+	font-size: 0.7rem;
+}
+.countdown-item {
+	min-width: 40px;
+	margin: 0 10px;
+	text-align: center;
+}
+.countdown-item span:first-child {
+	display: block;
+	font-size: 27px;
+	color: #3f3f3f;
+	animation: pulse 1s ease infinite alternate;
+}
+
+/* Форма */
+.form-inner {
+	position: relative;
+}
+.radio-group {
+	text-align: left;
+	width: 60%;
+	margin: 10px auto;
+	font-size: 16px;
+	color: rgba(88, 88, 86, 0.7);
+}
+.form-inner textarea {
+	width: 60%;
+	margin: 10px auto;
+	display: block;
+	border-radius: 5px;
+	font-size: 16px;
+	padding: 5px;
+}
+.form-inner input[type='submit'] {
+	width: 60%;
+	height: 35px;
+	margin: 10px auto;
+	display: block;
+	border-radius: 5px;
+	background: linear-gradient(to top left, #eaca79, #fffaf8);
+	border: none;
+	font-size: 16px;
+	cursor: pointer;
+}
+.btn:hover {
+	transform: scale(1.05);
+}
+
+/* Модалка */
+.modal {
+	display: block;
+	position: fixed;
+	z-index: 9999;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(0, 0, 0, 0.8);
+}
+.modal-content {
+	background-color: #fffffa;
+	margin: 30% auto;
+	padding: 20px;
+	width: 80%;
+	text-align: center;
+	border-radius: 10px;
+}
+.kk {
+	width: 100%;
+	height: auto;
+}
+button {
+	padding: 10px 20px;
+	font-size: 16px;
+	border-radius: 30px;
+	border: 2px solid #eaca79;
+	background-color: #fffffa;
+	cursor: pointer;
+}
+.music-btn {
+	position: fixed;
+	bottom: 20px;
+	right: 20px;
+	width: 35px;
+	height: 35px;
+	border-radius: 50%;
+	border: none;
+	font-size: 15px;
+	cursor: pointer;
+	color: #fff;
+	background: rgba(255, 192, 203, 0.6); /* розоватая прозрачность */
+	backdrop-filter: blur(6px); /* эффект стекла */
+	box-shadow: 0 4px 12px rgba(255, 182, 193, 0.6);
+	transition: all 0.3s ease;
+	z-index: 9999;
+	padding: 0;
+}
+
+.music-btn:hover {
+	background: rgba(255, 182, 193, 0.8);
+	box-shadow: 0 6px 18px rgba(255, 182, 193, 0.9);
+	transform: scale(1.1);
+}
+
+/* CALENDAR */
+
+.bodys {
+	margin: 0;
+	background: #fffdf7;
+	color: #1b1b1b;
+	display: grid;
+	place-items: start center;
+	min-height: 100vh;
+	padding: 32px 20px 60px;
+	box-sizing: border-box;
+}
+
+.wrapper-calendar {
+	width: min(840px, 92vw);
+}
+
+/* Заголовок + «бабочка» */
+.title-2 {
+	display: flex;
+	align-items: center;
+	gap: 12px;
+	font-size: clamp(28px, 4vw, 40px);
+	font-weight: 700;
+	letter-spacing: 0.5px;
+	margin: 32px 0 6px;
+	position: relative;
+	justify-content: center;
+}
+.butterfly {
+	width: 64px;
+	height: 64px;
+	flex: 0 0 auto;
+	position: absolute;
+	right: 0;
+	top: -54px;
+}
+
+/* Золотая строка с датой/временем */
+.gold-line {
+	font-style: italic;
+	font-size: clamp(22px, 3.5vw, 36px);
+	color: #caa64b;
+	line-height: 1.35;
+	margin: 10px 0 26px;
+	text-align: center;
+}
+
+/* Разделительная линия */
+.rule {
+	height: 1px;
+	background: #e7dfc6;
+	margin: 10px 0 24px;
+}
+
+/* Календарь */
+.calendar {
+	width: 100%;
+}
+.weekdays,
+.days {
+	display: grid;
+	grid-template-columns: repeat(7, 1fr);
+	gap: clamp(8px, 1.5vw, 16px);
+}
+.weekday {
+	text-align: center;
+	font-size: clamp(16px, 2.2vw, 22px);
+	font-weight: 700;
+}
+.days {
+	margin-top: 14px;
+}
+.day {
+	aspect-ratio: 1 / 1;
+	display: grid;
+	place-items: center;
+	font-size: clamp(20px, 3vw, 28px);
+	position: relative;
+}
+.day.muted {
+	color: #767676;
+}
+
+/* Сердечко вокруг 17 */
+.day.heart::before {
+	content: '';
+	position: absolute;
+	inset: 6% 8%;
+	height: 100%;
+	background: url('icon/heart.svg') center/contain no-repeat;
+	pointer-events: none;
+}
+
+/* Адаптивный отступ снизу */
+
+.bbt {
+  text-decoration: none;
+  position: relative;
+}
+
+
+.spacer {
+	height: min(10vh, 120px);
+}
+
+.invitation {
+	text-align: center;
+	max-width: 600px;
+	padding: 30px;
+  position: relative;
+}
+
+.invitation > img {
+	max-width: 300px;
+	margin: 20px auto;
+	display: block;
+}
+
+.butterfly-icon {
+  position: absolute;
+  bottom: 50px;
+  left: 10px;
+  max-width: 70px !important;
+  z-index: -1;
+}
+
+.title-3 {
+	font-size: 20px;
+	font-weight: bold;
+	letter-spacing: 2px;
+	color: #2d2d2d;
+	margin: 15px 0;
+}
+
+.address {
+	font-size: 18px;
+	line-height: 1.6;
+	color: #444;
+	margin-bottom: 15px;
+}
+
+.highlight {
+	font-size: 28px;
+	color: #d4af37; /* алтын түстес */
+	margin: 10px 0;
+	display: block;
+  text-transform: uppercase;
+  font-style: italic;
+}
+
+.build {
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.footer {
+	font-size: 16px;
+	color: #555;
+	margin-top: 20px;
+}
+
+.navigator {
+	margin-top: 20px;
+	display: inline-flex;
+	align-items: center;
+	border: 1px solid #ccc;
+	border-radius: 10px;
+	padding: 8px 15px;
+	font-size: 16px;
+	color: #333;
+  text-decoration: none;
+}
+
+.navigator img {
+	max-width: 30px;
+  margin: 0;
+	margin-right: 10px;
+}
+
+.img-wrap {
+  max-width: 400px;
+}
+.img-wrap img {
+  width: 100%;
+}
+
+.relativess {
+  position: relative;
+  box-sizing: border-box;
+  padding: 80px 0 25px;
+}
+.relativess img {
+  width: 100%;
+}
+.texts-name {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  max-width: 1200px;
+}
+.uppercase {
+  text-transform: uppercase;
+  font-size: 20px;
+}
+.names {
+  font-size: 24px;
+  color: #eaca79;
+  display: inline-block;
+  padding-left: 20px;
+}
